@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\korni\\OneDrive\\Desktop\\NAI_K-means\\src\\IRIS.csv";
+        String filePath = "/Users/aniasmuga/IdeaProjects/psm8/NAI_K_means/src/IRIS.csv";
         List<double[]> data = loadData(filePath);
 
         int k = 3;
@@ -19,13 +19,12 @@ public class Main {
 
         exportClusteredData(data, kMeans.assignments, "iris_clustered.csv");
         exportCentroids(kMeans.centroids, "centroids.csv");
-        System.out.println("CSV files exported ✅");
     }
 
     private static List<double[]> loadData(String filePath) {
         List<double[]> data = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line = reader.readLine(); // Skip header
+            String line = reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.trim().split(",");
                 if (parts.length < 4) continue;
